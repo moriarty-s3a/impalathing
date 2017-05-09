@@ -7,8 +7,7 @@ import (
 	"bytes"
 	"fmt"
 	"git.apache.org/thrift.git/lib/go/thrift"
-	"hive_metastore"
-
+	"github.com/chenjingping/impalathing/services/hive_metastore"
 )
 
 // (needed to ensure safety because of naive import list construction.)

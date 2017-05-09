@@ -13,7 +13,7 @@ import (
         "strconv"
         "strings"
         "git.apache.org/thrift.git/lib/go/thrift"
-        "cli_service"
+        "github.com/chenjingping/impalathing/services/cli_service"
 )
 
 
