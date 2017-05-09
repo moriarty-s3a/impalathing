@@ -31,7 +31,7 @@ func Connect(host string, port int, options Options) (*Connection, error) {
 		return nil, err
 	}
 
-	transportFactory := thrift.NewTBufferedTransportFactory(24 * 1024 * 1024)
+	transportFactory := thrift.NewTBufferedTransportFactory(1024)
 	protocolFactory := thrift.NewTBinaryProtocolFactoryDefault()
 
 	transport := transportFactory.GetTransport(socket)
