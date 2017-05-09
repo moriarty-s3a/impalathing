@@ -131,7 +131,7 @@ func (r *rowSet) Next() bool {
 			return false
 		}
 
-		resp, err := r.client.Fetch(r.handle, false, 1000000)
+		resp, err := r.client.Fetch(r.handle, false, r.options.BatchSize)
 		if err != nil {
 			log.Printf("FetchResults failed: %v\n", err)
 			return false
