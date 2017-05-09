@@ -10,11 +10,11 @@ import (
 
 type Options struct {
 	PollIntervalSeconds float64
-	BatchSize           int64
+	BatchSize           int32
 }
 
 var (
-	DefaultOptions = Options{PollIntervalSeconds: 0.1, BatchSize: 10000}
+	DefaultOptions = Options{PollIntervalSeconds: 0.1, BatchSize: 1024}
 )
 
 type Connection struct {
