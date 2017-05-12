@@ -189,9 +189,6 @@ func (r *rowSet) Scan(dest ...interface{}) error {
 		switch dt := d.(type) {
 		case *string:
 			*dt = val
-		case *int8:
-			i, _ := strconv.ParseInt(val, 10, 0)
-			*dt = int8(i)
 		case *int:
 			i, _ := strconv.ParseInt(val, 10, 0)
 			*dt = int(i)
@@ -204,6 +201,9 @@ func (r *rowSet) Scan(dest ...interface{}) error {
 		case *int16:
 			i, _ := strconv.ParseInt(val, 10, 0)
 			*dt = int16(i)
+		case *int8:
+			i, _ := strconv.ParseInt(val, 10, 0)
+			*dt = int8(i)
 		case *float64:
 			*dt, _ = strconv.ParseFloat(val, 64)
 			/*
@@ -212,6 +212,9 @@ func (r *rowSet) Scan(dest ...interface{}) error {
 			   case *bool:
 			       *dt = val.(bool)
 			*/
+		case *bool:
+			b, _ := strconv.ParseBool(val)
+			*dt = b
 		default:
 			return fmt.Errorf("Can't scan value of type %T with value %v", dt, val)
 		}
