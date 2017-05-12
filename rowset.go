@@ -189,6 +189,9 @@ func (r *rowSet) Scan(dest ...interface{}) error {
 		switch dt := d.(type) {
 		case *string:
 			*dt = val
+		case *int8:
+			i, _ := strconv.ParseInt(val, 10, 0)
+			*dt = int8(i)
 		case *int:
 			i, _ := strconv.ParseInt(val, 10, 0)
 			*dt = int(i)
