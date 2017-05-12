@@ -1,6 +1,7 @@
 package impalathing
 
 import (
+	"errors"
 	"fmt"
 
 	"git.apache.org/thrift.git/lib/go/thrift"
@@ -24,8 +25,12 @@ type Connection struct {
 	options   Options
 }
 
-func Connect(host string, port int, options Options) (*Connection, error) {
-	socket, err := thrift.NewTSocket(fmt.Sprintf("%s:%d", host, port))
+func Dail(name, host, port string) (interface{}, error) {
+	return Connect(host, port, DefaultOptions)
+}
+
+func Connect(host, port string, options Options) (*Connection, error) {
+	socket, err := thrift.NewTSocket(fmt.Sprintf("%s:%s", host, port))
 
 	if err != nil {
 		return nil, err
@@ -43,6 +48,22 @@ func Connect(host string, port int, options Options) (*Connection, error) {
 	client := impala.NewImpalaServiceClientFactory(transport, protocolFactory)
 
 	return &Connection{client, nil, transport, options}, nil
+}
+
+func CloseCnn(itf interface{}) (err error) {
+	if cnn, ok := itf.(*Connection); ok {
+		return cnn.Close()
+	}
+
+	return errors.New("connection conversion failed")
+}
+
+func KeepAlive(itf interface{}) (err error) {
+	if cnn, ok := itf.(*Connection); ok {
+		return cnn.Ping()
+	}
+
+	return errors.New("connection convert failed")
 }
 
 func (c *Connection) isOpen() bool {
@@ -78,4 +99,11 @@ func (c *Connection) Query(query string) (RowSet, error) {
 	}
 
 	return newRowSet(c.client, handle, c.options), nil
+}
+
+func (c *Connection) Ping() error {
+	if c.isOpen() {
+		return c.client.PingImpalaService()
+	}
+	return nil
 }
