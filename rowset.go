@@ -41,6 +41,8 @@ type RowSet interface {
 	Poll() (*Status, error)
 	Wait() (*Status, error)
 	FetchAll() []map[string]interface{}
+
+	Close() (err error)
 }
 
 // Represents job status, including success state and time the
@@ -56,14 +58,18 @@ func newRowSet(client *impala.ImpalaServiceClient, handle *beeswax.QueryHandle, 
 }
 
 //
-//
-//
 func (s *Status) IsSuccess() bool {
 	return s.state != beeswax.QueryState_EXCEPTION
 }
 
+//
 func (s *Status) IsComplete() bool {
 	return s.state == beeswax.QueryState_FINISHED
+}
+
+// Add close func for query handle
+func (r *rowSet) Close() (err error) {
+	return r.client.Close(r.handle)
 }
 
 // Issue a thrift call to check for the job's current status.

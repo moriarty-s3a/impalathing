@@ -101,6 +101,7 @@ func (c *Connection) Query(query string) (RowSet, error) {
 	return newRowSet(c.client, handle, c.options), nil
 }
 
+// Add ping func for connection
 func (c *Connection) Ping() error {
 	if c.isOpen() {
 		return c.client.PingImpalaService()
