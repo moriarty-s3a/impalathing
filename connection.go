@@ -39,11 +39,7 @@ func Connect(host, port string, options Options) (*Connection, error) {
 	transportFactory := thrift.NewTBufferedTransportFactory(1024)
 	protocolFactory := thrift.NewTBinaryProtocolFactoryDefault()
 
-	transport, err := transportFactory.GetTransport(socket)
-	if err != nil {
-		return nil, err
-	}
-
+	transport := transportFactory.GetTransport(socket)
 	if err := transport.Open(); err != nil {
 		return nil, err
 	}
