@@ -9,7 +9,7 @@ import (
 	"errors"
 	"fmt"
 	"git.apache.org/thrift.git/lib/go/thrift"
-	"github.com/chenjingping/impalathing/services/hive_metastore"
+	"github.com/moriarty-s3a/impalathing/services/hive_metastore"
 
 )
 

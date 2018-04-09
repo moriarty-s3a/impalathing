@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/chenjingping/impalathing/services/beeswax"
-	impala "github.com/chenjingping/impalathing/services/impalaservice"
+	"github.com/moriarty-s3a/impalathing/services/beeswax"
+	impala "github.com/moriarty-s3a/impalathing/services/impalaservice"
 )
 
 type rowSet struct {

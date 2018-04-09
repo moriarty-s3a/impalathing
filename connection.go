@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"git.apache.org/thrift.git/lib/go/thrift"
-	"github.com/chenjingping/impalathing/services/beeswax"
-	impala "github.com/chenjingping/impalathing/services/impalaservice"
+	"github.com/moriarty-s3a/impalathing/services/beeswax"
+	impala "github.com/moriarty-s3a/impalathing/services/impalaservice"
 )
 
 type Options struct {
@@ -25,7 +25,7 @@ type Connection struct {
 	options   Options
 }
 
-func Dail(name, host, port string) (interface{}, error) {
+func Dial(name, host, port string) (interface{}, error) {
 	return Connect(host, port, DefaultOptions)
 }
 

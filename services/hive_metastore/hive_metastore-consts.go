@@ -7,7 +7,7 @@ import (
 	"bytes"
 	"fmt"
 	"git.apache.org/thrift.git/lib/go/thrift"
-	"github.com/chenjingping/impalathing/services/fb303"
+	"github.com/moriarty-s3a/impalathing/services/fb303"
 
 )
 

@@ -9,9 +9,9 @@ import (
 	"errors"
 	"fmt"
 	"git.apache.org/thrift.git/lib/go/thrift"
-	"github.com/chenjingping/impalathing/services/status"
-	"github.com/chenjingping/impalathing/services/beeswax"
-	"github.com/chenjingping/impalathing/services/cli_service"
+	"github.com/moriarty-s3a/impalathing/services/status"
+	"github.com/moriarty-s3a/impalathing/services/beeswax"
+	"github.com/moriarty-s3a/impalathing/services/cli_service"
 
 )
 
