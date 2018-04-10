@@ -5,6 +5,7 @@ package impalaservice
 
 import (
 	"bytes"
+	"context"
 	"database/sql/driver"
 	"errors"
 	"fmt"
@@ -298,15 +299,13 @@ func (p *ImpalaServiceClient) recvCancel() (value *status.TStatus, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error2 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error3 error
-    error3, err = error2.Read(iprot)
+    err = error2.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error3
     return
   }
   if mTypeId != thrift.REPLY {
@@ -378,15 +377,13 @@ func (p *ImpalaServiceClient) recvCloseInsert() (value *TInsertResult_, err erro
   }
   if mTypeId == thrift.EXCEPTION {
     error4 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error5 error
-    error5, err = error4.Read(iprot)
+    err = error4.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error5
     return
   }
   if mTypeId != thrift.REPLY {
@@ -458,15 +455,13 @@ func (p *ImpalaServiceClient) recvPingImpalaService() (err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error6 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error7 error
-    error7, err = error6.Read(iprot)
+    err = error6.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error7
     return
   }
   if mTypeId != thrift.REPLY {
@@ -500,7 +495,7 @@ type impalaServiceProcessorCancel struct {
   handler ImpalaService
 }
 
-func (p *impalaServiceProcessorCancel) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *impalaServiceProcessorCancel) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ImpalaServiceCancelArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -553,7 +548,7 @@ type impalaServiceProcessorCloseInsert struct {
   handler ImpalaService
 }
 
-func (p *impalaServiceProcessorCloseInsert) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *impalaServiceProcessorCloseInsert) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ImpalaServiceCloseInsertArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -608,7 +603,7 @@ type impalaServiceProcessorPingImpalaService struct {
   handler ImpalaService
 }
 
-func (p *impalaServiceProcessorPingImpalaService) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *impalaServiceProcessorPingImpalaService) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ImpalaServicePingImpalaServiceArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -1312,15 +1307,13 @@ func (p *ImpalaHiveServer2ServiceClient) recvResetCatalog() (value *status.TStat
   }
   if mTypeId == thrift.EXCEPTION {
     error70 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error71 error
-    error71, err = error70.Read(iprot)
+    err = error70.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error71
     return
   }
   if mTypeId != thrift.REPLY {
@@ -1353,7 +1346,7 @@ type impalaHiveServer2ServiceProcessorResetCatalog struct {
   handler ImpalaHiveServer2Service
 }
 
-func (p *impalaHiveServer2ServiceProcessorResetCatalog) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *impalaHiveServer2ServiceProcessorResetCatalog) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ImpalaHiveServer2ServiceResetCatalogArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()

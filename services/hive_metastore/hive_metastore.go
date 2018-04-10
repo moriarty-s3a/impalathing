@@ -5,6 +5,7 @@ package hive_metastore
 
 import (
 	"bytes"
+	"context"
 	"database/sql/driver"
 	"errors"
 	"fmt"
@@ -5304,15 +5305,13 @@ func (p *ThriftHiveMetastoreClient) recvCreateDatabase() (err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error32 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error33 error
-    error33, err = error32.Read(iprot)
+    err = error32.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error33
     return
   }
   if mTypeId != thrift.REPLY {
@@ -5389,15 +5388,13 @@ func (p *ThriftHiveMetastoreClient) recvGetDatabase() (value *Database, err erro
   }
   if mTypeId == thrift.EXCEPTION {
     error34 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error35 error
-    error35, err = error34.Read(iprot)
+    err = error34.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error35
     return
   }
   if mTypeId != thrift.REPLY {
@@ -5474,15 +5471,13 @@ func (p *ThriftHiveMetastoreClient) recvDropDatabase() (err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error36 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error37 error
-    error37, err = error36.Read(iprot)
+    err = error36.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error37
     return
   }
   if mTypeId != thrift.REPLY {
@@ -5559,15 +5554,13 @@ func (p *ThriftHiveMetastoreClient) recvGetDatabases() (value []string, err erro
   }
   if mTypeId == thrift.EXCEPTION {
     error38 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error39 error
-    error39, err = error38.Read(iprot)
+    err = error38.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error39
     return
   }
   if mTypeId != thrift.REPLY {
@@ -5636,15 +5629,13 @@ func (p *ThriftHiveMetastoreClient) recvGetAllDatabases() (value []string, err e
   }
   if mTypeId == thrift.EXCEPTION {
     error40 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error41 error
-    error41, err = error40.Read(iprot)
+    err = error40.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error41
     return
   }
   if mTypeId != thrift.REPLY {
@@ -5718,15 +5709,13 @@ func (p *ThriftHiveMetastoreClient) recvAlterDatabase() (err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error42 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error43 error
-    error43, err = error42.Read(iprot)
+    err = error42.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error43
     return
   }
   if mTypeId != thrift.REPLY {
@@ -5800,15 +5789,13 @@ func (p *ThriftHiveMetastoreClient) recvGetType() (value *Type, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error44 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error45 error
-    error45, err = error44.Read(iprot)
+    err = error44.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error45
     return
   }
   if mTypeId != thrift.REPLY {
@@ -5883,15 +5870,13 @@ func (p *ThriftHiveMetastoreClient) recvCreateType() (value bool, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error46 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error47 error
-    error47, err = error46.Read(iprot)
+    err = error46.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error47
     return
   }
   if mTypeId != thrift.REPLY {
@@ -5969,15 +5954,13 @@ func (p *ThriftHiveMetastoreClient) recvDropType() (value bool, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error48 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error49 error
-    error49, err = error48.Read(iprot)
+    err = error48.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error49
     return
   }
   if mTypeId != thrift.REPLY {
@@ -6052,15 +6035,13 @@ func (p *ThriftHiveMetastoreClient) recvGetTypeAll() (value map[string]*Type, er
   }
   if mTypeId == thrift.EXCEPTION {
     error50 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error51 error
-    error51, err = error50.Read(iprot)
+    err = error50.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error51
     return
   }
   if mTypeId != thrift.REPLY {
@@ -6134,15 +6115,13 @@ func (p *ThriftHiveMetastoreClient) recvGetFields() (value []*FieldSchema, err e
   }
   if mTypeId == thrift.EXCEPTION {
     error52 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error53 error
-    error53, err = error52.Read(iprot)
+    err = error52.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error53
     return
   }
   if mTypeId != thrift.REPLY {
@@ -6222,15 +6201,13 @@ func (p *ThriftHiveMetastoreClient) recvGetSchema() (value []*FieldSchema, err e
   }
   if mTypeId == thrift.EXCEPTION {
     error54 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error55 error
-    error55, err = error54.Read(iprot)
+    err = error54.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error55
     return
   }
   if mTypeId != thrift.REPLY {
@@ -6308,15 +6285,13 @@ func (p *ThriftHiveMetastoreClient) recvCreateTable() (err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error56 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error57 error
-    error57, err = error56.Read(iprot)
+    err = error56.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error57
     return
   }
   if mTypeId != thrift.REPLY {
@@ -6400,15 +6375,13 @@ func (p *ThriftHiveMetastoreClient) recvDropTable() (err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error58 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error59 error
-    error59, err = error58.Read(iprot)
+    err = error58.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error59
     return
   }
   if mTypeId != thrift.REPLY {
@@ -6484,15 +6457,13 @@ func (p *ThriftHiveMetastoreClient) recvGetTables() (value []string, err error) 
   }
   if mTypeId == thrift.EXCEPTION {
     error60 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error61 error
-    error61, err = error60.Read(iprot)
+    err = error60.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error61
     return
   }
   if mTypeId != thrift.REPLY {
@@ -6564,15 +6535,13 @@ func (p *ThriftHiveMetastoreClient) recvGetAllTables() (value []string, err erro
   }
   if mTypeId == thrift.EXCEPTION {
     error62 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error63 error
-    error63, err = error62.Read(iprot)
+    err = error62.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error63
     return
   }
   if mTypeId != thrift.REPLY {
@@ -6646,15 +6615,13 @@ func (p *ThriftHiveMetastoreClient) recvGetTable() (value *Table, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error64 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error65 error
-    error65, err = error64.Read(iprot)
+    err = error64.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error65
     return
   }
   if mTypeId != thrift.REPLY {
@@ -6733,15 +6700,13 @@ func (p *ThriftHiveMetastoreClient) recvAlterTable() (err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error66 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error67 error
-    error67, err = error66.Read(iprot)
+    err = error66.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error67
     return
   }
   if mTypeId != thrift.REPLY {
@@ -6815,15 +6780,13 @@ func (p *ThriftHiveMetastoreClient) recvAddPartition() (value *Partition, err er
   }
   if mTypeId == thrift.EXCEPTION {
     error68 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error69 error
-    error69, err = error68.Read(iprot)
+    err = error68.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error69
     return
   }
   if mTypeId != thrift.REPLY {
@@ -6905,15 +6868,13 @@ func (p *ThriftHiveMetastoreClient) recvAppendPartition() (value *Partition, err
   }
   if mTypeId == thrift.EXCEPTION {
     error70 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error71 error
-    error71, err = error70.Read(iprot)
+    err = error70.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error71
     return
   }
   if mTypeId != thrift.REPLY {
@@ -6995,15 +6956,13 @@ func (p *ThriftHiveMetastoreClient) recvAppendPartitionByName() (value *Partitio
   }
   if mTypeId == thrift.EXCEPTION {
     error72 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error73 error
-    error73, err = error72.Read(iprot)
+    err = error72.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error73
     return
   }
   if mTypeId != thrift.REPLY {
@@ -7087,15 +7046,13 @@ func (p *ThriftHiveMetastoreClient) recvDropPartition() (value bool, err error) 
   }
   if mTypeId == thrift.EXCEPTION {
     error74 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error75 error
-    error75, err = error74.Read(iprot)
+    err = error74.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error75
     return
   }
   if mTypeId != thrift.REPLY {
@@ -7176,15 +7133,13 @@ func (p *ThriftHiveMetastoreClient) recvDropPartitionByName() (value bool, err e
   }
   if mTypeId == thrift.EXCEPTION {
     error76 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error77 error
-    error77, err = error76.Read(iprot)
+    err = error76.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error77
     return
   }
   if mTypeId != thrift.REPLY {
@@ -7263,15 +7218,13 @@ func (p *ThriftHiveMetastoreClient) recvGetPartition() (value *Partition, err er
   }
   if mTypeId == thrift.EXCEPTION {
     error78 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error79 error
-    error79, err = error78.Read(iprot)
+    err = error78.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error79
     return
   }
   if mTypeId != thrift.REPLY {
@@ -7354,15 +7307,13 @@ func (p *ThriftHiveMetastoreClient) recvGetPartitionWithAuth() (value *Partition
   }
   if mTypeId == thrift.EXCEPTION {
     error80 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error81 error
-    error81, err = error80.Read(iprot)
+    err = error80.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error81
     return
   }
   if mTypeId != thrift.REPLY {
@@ -7441,15 +7392,13 @@ func (p *ThriftHiveMetastoreClient) recvGetPartitionByName() (value *Partition, 
   }
   if mTypeId == thrift.EXCEPTION {
     error82 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error83 error
-    error83, err = error82.Read(iprot)
+    err = error82.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error83
     return
   }
   if mTypeId != thrift.REPLY {
@@ -7528,15 +7477,13 @@ func (p *ThriftHiveMetastoreClient) recvGetPartitions() (value []*Partition, err
   }
   if mTypeId == thrift.EXCEPTION {
     error84 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error85 error
-    error85, err = error84.Read(iprot)
+    err = error84.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error85
     return
   }
   if mTypeId != thrift.REPLY {
@@ -7619,15 +7566,13 @@ func (p *ThriftHiveMetastoreClient) recvGetPartitionsWithAuth() (value []*Partit
   }
   if mTypeId == thrift.EXCEPTION {
     error86 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error87 error
-    error87, err = error86.Read(iprot)
+    err = error86.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error87
     return
   }
   if mTypeId != thrift.REPLY {
@@ -7706,15 +7651,13 @@ func (p *ThriftHiveMetastoreClient) recvGetPartitionNames() (value []string, err
   }
   if mTypeId == thrift.EXCEPTION {
     error88 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error89 error
-    error89, err = error88.Read(iprot)
+    err = error88.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error89
     return
   }
   if mTypeId != thrift.REPLY {
@@ -7792,15 +7735,13 @@ func (p *ThriftHiveMetastoreClient) recvGetPartitionsPs() (value []*Partition, e
   }
   if mTypeId == thrift.EXCEPTION {
     error90 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error91 error
-    error91, err = error90.Read(iprot)
+    err = error90.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error91
     return
   }
   if mTypeId != thrift.REPLY {
@@ -7882,15 +7823,13 @@ func (p *ThriftHiveMetastoreClient) recvGetPartitionsPsWithAuth() (value []*Part
   }
   if mTypeId == thrift.EXCEPTION {
     error92 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error93 error
-    error93, err = error92.Read(iprot)
+    err = error92.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error93
     return
   }
   if mTypeId != thrift.REPLY {
@@ -7971,15 +7910,13 @@ func (p *ThriftHiveMetastoreClient) recvGetPartitionNamesPs() (value []string, e
   }
   if mTypeId == thrift.EXCEPTION {
     error94 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error95 error
-    error95, err = error94.Read(iprot)
+    err = error94.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error95
     return
   }
   if mTypeId != thrift.REPLY {
@@ -8057,15 +7994,13 @@ func (p *ThriftHiveMetastoreClient) recvGetPartitionsByFilter() (value []*Partit
   }
   if mTypeId == thrift.EXCEPTION {
     error96 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error97 error
-    error97, err = error96.Read(iprot)
+    err = error96.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error97
     return
   }
   if mTypeId != thrift.REPLY {
@@ -8144,15 +8079,13 @@ func (p *ThriftHiveMetastoreClient) recvAlterPartition() (err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error98 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error99 error
-    error99, err = error98.Read(iprot)
+    err = error98.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error99
     return
   }
   if mTypeId != thrift.REPLY {
@@ -8228,15 +8161,13 @@ func (p *ThriftHiveMetastoreClient) recvGetConfigValue() (value string, err erro
   }
   if mTypeId == thrift.EXCEPTION {
     error100 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error101 error
-    error101, err = error100.Read(iprot)
+    err = error100.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error101
     return
   }
   if mTypeId != thrift.REPLY {
@@ -8308,15 +8239,13 @@ func (p *ThriftHiveMetastoreClient) recvPartitionNameToVals() (value []string, e
   }
   if mTypeId == thrift.EXCEPTION {
     error102 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error103 error
-    error103, err = error102.Read(iprot)
+    err = error102.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error103
     return
   }
   if mTypeId != thrift.REPLY {
@@ -8388,15 +8317,13 @@ func (p *ThriftHiveMetastoreClient) recvPartitionNameToSpec() (value map[string]
   }
   if mTypeId == thrift.EXCEPTION {
     error104 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error105 error
-    error105, err = error104.Read(iprot)
+    err = error104.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error105
     return
   }
   if mTypeId != thrift.REPLY {
@@ -8470,15 +8397,13 @@ func (p *ThriftHiveMetastoreClient) recvAddIndex() (value *Index, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error106 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error107 error
-    error107, err = error106.Read(iprot)
+    err = error106.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error107
     return
   }
   if mTypeId != thrift.REPLY {
@@ -8562,15 +8487,13 @@ func (p *ThriftHiveMetastoreClient) recvAlterIndex() (err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error108 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error109 error
-    error109, err = error108.Read(iprot)
+    err = error108.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error109
     return
   }
   if mTypeId != thrift.REPLY {
@@ -8650,15 +8573,13 @@ func (p *ThriftHiveMetastoreClient) recvDropIndexByName() (value bool, err error
   }
   if mTypeId == thrift.EXCEPTION {
     error110 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error111 error
-    error111, err = error110.Read(iprot)
+    err = error110.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error111
     return
   }
   if mTypeId != thrift.REPLY {
@@ -8737,15 +8658,13 @@ func (p *ThriftHiveMetastoreClient) recvGetIndexByName() (value *Index, err erro
   }
   if mTypeId == thrift.EXCEPTION {
     error112 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error113 error
-    error113, err = error112.Read(iprot)
+    err = error112.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error113
     return
   }
   if mTypeId != thrift.REPLY {
@@ -8824,15 +8743,13 @@ func (p *ThriftHiveMetastoreClient) recvGetIndexes() (value []*Index, err error)
   }
   if mTypeId == thrift.EXCEPTION {
     error114 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error115 error
-    error115, err = error114.Read(iprot)
+    err = error114.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error115
     return
   }
   if mTypeId != thrift.REPLY {
@@ -8911,15 +8828,13 @@ func (p *ThriftHiveMetastoreClient) recvGetIndexNames() (value []string, err err
   }
   if mTypeId == thrift.EXCEPTION {
     error116 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error117 error
-    error117, err = error116.Read(iprot)
+    err = error116.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error117
     return
   }
   if mTypeId != thrift.REPLY {
@@ -8991,15 +8906,13 @@ func (p *ThriftHiveMetastoreClient) recvCreateRole() (value bool, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error118 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error119 error
-    error119, err = error118.Read(iprot)
+    err = error118.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error119
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9071,15 +8984,13 @@ func (p *ThriftHiveMetastoreClient) recvDropRole() (value bool, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error120 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error121 error
-    error121, err = error120.Read(iprot)
+    err = error120.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error121
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9148,15 +9059,13 @@ func (p *ThriftHiveMetastoreClient) recvGetRoleNames() (value []string, err erro
   }
   if mTypeId == thrift.EXCEPTION {
     error122 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error123 error
-    error123, err = error122.Read(iprot)
+    err = error122.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error123
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9238,15 +9147,13 @@ func (p *ThriftHiveMetastoreClient) recvGrantRole() (value bool, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error124 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error125 error
-    error125, err = error124.Read(iprot)
+    err = error124.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error125
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9322,15 +9229,13 @@ func (p *ThriftHiveMetastoreClient) recvRevokeRole() (value bool, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error126 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error127 error
-    error127, err = error126.Read(iprot)
+    err = error126.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error127
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9404,15 +9309,13 @@ func (p *ThriftHiveMetastoreClient) recvListRoles() (value []*Role, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error128 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error129 error
-    error129, err = error128.Read(iprot)
+    err = error128.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error129
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9488,15 +9391,13 @@ func (p *ThriftHiveMetastoreClient) recvGetPrivilegeSet() (value *PrincipalPrivi
   }
   if mTypeId == thrift.EXCEPTION {
     error130 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error131 error
-    error131, err = error130.Read(iprot)
+    err = error130.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error131
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9572,15 +9473,13 @@ func (p *ThriftHiveMetastoreClient) recvListPrivileges() (value []*HiveObjectPri
   }
   if mTypeId == thrift.EXCEPTION {
     error132 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error133 error
-    error133, err = error132.Read(iprot)
+    err = error132.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error133
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9652,15 +9551,13 @@ func (p *ThriftHiveMetastoreClient) recvGrantPrivileges() (value bool, err error
   }
   if mTypeId == thrift.EXCEPTION {
     error134 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error135 error
-    error135, err = error134.Read(iprot)
+    err = error134.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error135
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9732,15 +9629,13 @@ func (p *ThriftHiveMetastoreClient) recvRevokePrivileges() (value bool, err erro
   }
   if mTypeId == thrift.EXCEPTION {
     error136 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error137 error
-    error137, err = error136.Read(iprot)
+    err = error136.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error137
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9812,15 +9707,13 @@ func (p *ThriftHiveMetastoreClient) recvGetDelegationToken() (value string, err 
   }
   if mTypeId == thrift.EXCEPTION {
     error138 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error139 error
-    error139, err = error138.Read(iprot)
+    err = error138.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error139
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9894,15 +9787,13 @@ func (p *ThriftHiveMetastoreClient) recvGetDelegationTokenWithSignature() (value
   }
   if mTypeId == thrift.EXCEPTION {
     error140 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error141 error
-    error141, err = error140.Read(iprot)
+    err = error140.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error141
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9974,15 +9865,13 @@ func (p *ThriftHiveMetastoreClient) recvRenewDelegationToken() (value int64, err
   }
   if mTypeId == thrift.EXCEPTION {
     error142 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error143 error
-    error143, err = error142.Read(iprot)
+    err = error142.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error143
     return
   }
   if mTypeId != thrift.REPLY {
@@ -10054,15 +9943,13 @@ func (p *ThriftHiveMetastoreClient) recvCancelDelegationToken() (err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error144 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error145 error
-    error145, err = error144.Read(iprot)
+    err = error144.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error145
     return
   }
   if mTypeId != thrift.REPLY {
@@ -10154,7 +10041,7 @@ type thriftHiveMetastoreProcessorCreateDatabase struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorCreateDatabase) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorCreateDatabase) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreCreateDatabaseArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10208,7 +10095,7 @@ type thriftHiveMetastoreProcessorGetDatabase struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetDatabase) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetDatabase) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetDatabaseArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10263,7 +10150,7 @@ type thriftHiveMetastoreProcessorDropDatabase struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorDropDatabase) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorDropDatabase) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreDropDatabaseArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10317,7 +10204,7 @@ type thriftHiveMetastoreProcessorGetDatabases struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetDatabases) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetDatabases) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetDatabasesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10370,7 +10257,7 @@ type thriftHiveMetastoreProcessorGetAllDatabases struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetAllDatabases) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetAllDatabases) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetAllDatabasesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10423,7 +10310,7 @@ type thriftHiveMetastoreProcessorAlterDatabase struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorAlterDatabase) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorAlterDatabase) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreAlterDatabaseArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10475,7 +10362,7 @@ type thriftHiveMetastoreProcessorGetType struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetType) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetType) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetTypeArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10530,7 +10417,7 @@ type thriftHiveMetastoreProcessorCreateType struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorCreateType) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorCreateType) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreCreateTypeArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10587,7 +10474,7 @@ type thriftHiveMetastoreProcessorDropType struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorDropType) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorDropType) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreDropTypeArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10642,7 +10529,7 @@ type thriftHiveMetastoreProcessorGetTypeAll struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetTypeAll) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetTypeAll) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetTypeAllArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10695,7 +10582,7 @@ type thriftHiveMetastoreProcessorGetFields struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetFields) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetFields) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetFieldsArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10752,7 +10639,7 @@ type thriftHiveMetastoreProcessorGetSchema struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetSchema) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetSchema) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetSchemaArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10809,7 +10696,7 @@ type thriftHiveMetastoreProcessorCreateTable struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorCreateTable) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorCreateTable) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreCreateTableArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10865,7 +10752,7 @@ type thriftHiveMetastoreProcessorDropTable struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorDropTable) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorDropTable) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreDropTableArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10917,7 +10804,7 @@ type thriftHiveMetastoreProcessorGetTables struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetTables) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetTables) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetTablesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10970,7 +10857,7 @@ type thriftHiveMetastoreProcessorGetAllTables struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetAllTables) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetAllTables) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetAllTablesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11023,7 +10910,7 @@ type thriftHiveMetastoreProcessorGetTable struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetTable) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetTable) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetTableArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11078,7 +10965,7 @@ type thriftHiveMetastoreProcessorAlterTable struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorAlterTable) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorAlterTable) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreAlterTableArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11130,7 +11017,7 @@ type thriftHiveMetastoreProcessorAddPartition struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorAddPartition) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorAddPartition) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreAddPartitionArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11187,7 +11074,7 @@ type thriftHiveMetastoreProcessorAppendPartition struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorAppendPartition) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorAppendPartition) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreAppendPartitionArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11244,7 +11131,7 @@ type thriftHiveMetastoreProcessorAppendPartitionByName struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorAppendPartitionByName) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorAppendPartitionByName) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreAppendPartitionByNameArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11301,7 +11188,7 @@ type thriftHiveMetastoreProcessorDropPartition struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorDropPartition) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorDropPartition) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreDropPartitionArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11356,7 +11243,7 @@ type thriftHiveMetastoreProcessorDropPartitionByName struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorDropPartitionByName) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorDropPartitionByName) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreDropPartitionByNameArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11411,7 +11298,7 @@ type thriftHiveMetastoreProcessorGetPartition struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetPartition) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetPartition) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetPartitionArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11466,7 +11353,7 @@ type thriftHiveMetastoreProcessorGetPartitionWithAuth struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetPartitionWithAuth) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetPartitionWithAuth) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetPartitionWithAuthArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11521,7 +11408,7 @@ type thriftHiveMetastoreProcessorGetPartitionByName struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetPartitionByName) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetPartitionByName) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetPartitionByNameArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11576,7 +11463,7 @@ type thriftHiveMetastoreProcessorGetPartitions struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetPartitions) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetPartitions) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetPartitionsArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11631,7 +11518,7 @@ type thriftHiveMetastoreProcessorGetPartitionsWithAuth struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetPartitionsWithAuth) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetPartitionsWithAuth) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetPartitionsWithAuthArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11686,7 +11573,7 @@ type thriftHiveMetastoreProcessorGetPartitionNames struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetPartitionNames) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetPartitionNames) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetPartitionNamesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11739,7 +11626,7 @@ type thriftHiveMetastoreProcessorGetPartitionsPs struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetPartitionsPs) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetPartitionsPs) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetPartitionsPsArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11792,7 +11679,7 @@ type thriftHiveMetastoreProcessorGetPartitionsPsWithAuth struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetPartitionsPsWithAuth) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetPartitionsPsWithAuth) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetPartitionsPsWithAuthArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11847,7 +11734,7 @@ type thriftHiveMetastoreProcessorGetPartitionNamesPs struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetPartitionNamesPs) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetPartitionNamesPs) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetPartitionNamesPsArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11900,7 +11787,7 @@ type thriftHiveMetastoreProcessorGetPartitionsByFilter struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetPartitionsByFilter) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetPartitionsByFilter) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetPartitionsByFilterArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11955,7 +11842,7 @@ type thriftHiveMetastoreProcessorAlterPartition struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorAlterPartition) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorAlterPartition) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreAlterPartitionArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12007,7 +11894,7 @@ type thriftHiveMetastoreProcessorGetConfigValue struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetConfigValue) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetConfigValue) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetConfigValueArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12060,7 +11947,7 @@ type thriftHiveMetastoreProcessorPartitionNameToVals struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorPartitionNameToVals) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorPartitionNameToVals) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastorePartitionNameToValsArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12113,7 +12000,7 @@ type thriftHiveMetastoreProcessorPartitionNameToSpec struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorPartitionNameToSpec) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorPartitionNameToSpec) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastorePartitionNameToSpecArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12166,7 +12053,7 @@ type thriftHiveMetastoreProcessorAddIndex struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorAddIndex) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorAddIndex) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreAddIndexArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12223,7 +12110,7 @@ type thriftHiveMetastoreProcessorAlterIndex struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorAlterIndex) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorAlterIndex) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreAlterIndexArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12275,7 +12162,7 @@ type thriftHiveMetastoreProcessorDropIndexByName struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorDropIndexByName) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorDropIndexByName) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreDropIndexByNameArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12330,7 +12217,7 @@ type thriftHiveMetastoreProcessorGetIndexByName struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetIndexByName) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetIndexByName) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetIndexByNameArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12385,7 +12272,7 @@ type thriftHiveMetastoreProcessorGetIndexes struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetIndexes) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetIndexes) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetIndexesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12440,7 +12327,7 @@ type thriftHiveMetastoreProcessorGetIndexNames struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetIndexNames) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetIndexNames) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetIndexNamesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12493,7 +12380,7 @@ type thriftHiveMetastoreProcessorCreateRole struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorCreateRole) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorCreateRole) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreCreateRoleArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12546,7 +12433,7 @@ type thriftHiveMetastoreProcessorDropRole struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorDropRole) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorDropRole) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreDropRoleArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12599,7 +12486,7 @@ type thriftHiveMetastoreProcessorGetRoleNames struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetRoleNames) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetRoleNames) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetRoleNamesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12652,7 +12539,7 @@ type thriftHiveMetastoreProcessorGrantRole struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGrantRole) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGrantRole) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGrantRoleArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12705,7 +12592,7 @@ type thriftHiveMetastoreProcessorRevokeRole struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorRevokeRole) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorRevokeRole) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreRevokeRoleArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12758,7 +12645,7 @@ type thriftHiveMetastoreProcessorListRoles struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorListRoles) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorListRoles) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreListRolesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12811,7 +12698,7 @@ type thriftHiveMetastoreProcessorGetPrivilegeSet struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetPrivilegeSet) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetPrivilegeSet) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetPrivilegeSetArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12864,7 +12751,7 @@ type thriftHiveMetastoreProcessorListPrivileges struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorListPrivileges) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorListPrivileges) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreListPrivilegesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12917,7 +12804,7 @@ type thriftHiveMetastoreProcessorGrantPrivileges struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGrantPrivileges) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGrantPrivileges) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGrantPrivilegesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -12970,7 +12857,7 @@ type thriftHiveMetastoreProcessorRevokePrivileges struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorRevokePrivileges) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorRevokePrivileges) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreRevokePrivilegesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -13023,7 +12910,7 @@ type thriftHiveMetastoreProcessorGetDelegationToken struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetDelegationToken) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetDelegationToken) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetDelegationTokenArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -13076,7 +12963,7 @@ type thriftHiveMetastoreProcessorGetDelegationTokenWithSignature struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorGetDelegationTokenWithSignature) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorGetDelegationTokenWithSignature) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreGetDelegationTokenWithSignatureArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -13129,7 +13016,7 @@ type thriftHiveMetastoreProcessorRenewDelegationToken struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorRenewDelegationToken) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorRenewDelegationToken) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreRenewDelegationTokenArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -13182,7 +13069,7 @@ type thriftHiveMetastoreProcessorCancelDelegationToken struct {
   handler ThriftHiveMetastore
 }
 
-func (p *thriftHiveMetastoreProcessorCancelDelegationToken) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *thriftHiveMetastoreProcessorCancelDelegationToken) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := ThriftHiveMetastoreCancelDelegationTokenArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()

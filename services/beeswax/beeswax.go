@@ -5,6 +5,7 @@ package beeswax
 
 import (
 	"bytes"
+	"context"
 	"database/sql/driver"
 	"errors"
 	"fmt"
@@ -1461,15 +1462,13 @@ func (p *BeeswaxServiceClient) recvQuery() (value *QueryHandle, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error3 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error4 error
-    error4, err = error3.Read(iprot)
+    err = error3.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error4
     return
   }
   if mTypeId != thrift.REPLY {
@@ -1545,15 +1544,13 @@ func (p *BeeswaxServiceClient) recvExecuteAndWait() (value *QueryHandle, err err
   }
   if mTypeId == thrift.EXCEPTION {
     error5 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error6 error
-    error6, err = error5.Read(iprot)
+    err = error5.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error6
     return
   }
   if mTypeId != thrift.REPLY {
@@ -1627,15 +1624,13 @@ func (p *BeeswaxServiceClient) recvExplain() (value *QueryExplanation, err error
   }
   if mTypeId == thrift.EXCEPTION {
     error7 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error8 error
-    error8, err = error7.Read(iprot)
+    err = error7.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error8
     return
   }
   if mTypeId != thrift.REPLY {
@@ -1715,15 +1710,13 @@ func (p *BeeswaxServiceClient) recvFetch() (value *Results, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error9 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error10 error
-    error10, err = error9.Read(iprot)
+    err = error9.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error10
     return
   }
   if mTypeId != thrift.REPLY {
@@ -1800,15 +1793,13 @@ func (p *BeeswaxServiceClient) recvGetState() (value QueryState, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error11 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error12 error
-    error12, err = error11.Read(iprot)
+    err = error11.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error12
     return
   }
   if mTypeId != thrift.REPLY {
@@ -1882,15 +1873,13 @@ func (p *BeeswaxServiceClient) recvGetResultsMetadata() (value *ResultsMetadata,
   }
   if mTypeId == thrift.EXCEPTION {
     error13 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error14 error
-    error14, err = error13.Read(iprot)
+    err = error13.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error14
     return
   }
   if mTypeId != thrift.REPLY {
@@ -1964,15 +1953,13 @@ func (p *BeeswaxServiceClient) recvEcho() (value string, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error15 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error16 error
-    error16, err = error15.Read(iprot)
+    err = error15.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error16
     return
   }
   if mTypeId != thrift.REPLY {
@@ -2039,15 +2026,13 @@ func (p *BeeswaxServiceClient) recvDumpConfig() (value string, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error17 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error18 error
-    error18, err = error17.Read(iprot)
+    err = error17.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error18
     return
   }
   if mTypeId != thrift.REPLY {
@@ -2117,15 +2102,13 @@ func (p *BeeswaxServiceClient) recvGetLog() (value string, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error19 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error20 error
-    error20, err = error19.Read(iprot)
+    err = error19.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error20
     return
   }
   if mTypeId != thrift.REPLY {
@@ -2197,15 +2180,13 @@ func (p *BeeswaxServiceClient) recvGetDefaultConfiguration() (value []*ConfigVar
   }
   if mTypeId == thrift.EXCEPTION {
     error21 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error22 error
-    error22, err = error21.Read(iprot)
+    err = error21.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error22
     return
   }
   if mTypeId != thrift.REPLY {
@@ -2273,15 +2254,13 @@ func (p *BeeswaxServiceClient) recvClose() (err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error23 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error24 error
-    error24, err = error23.Read(iprot)
+    err = error23.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error24
     return
   }
   if mTypeId != thrift.REPLY {
@@ -2355,15 +2334,13 @@ func (p *BeeswaxServiceClient) recvClean() (err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error25 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error26 error
-    error26, err = error25.Read(iprot)
+    err = error25.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error26
     return
   }
   if mTypeId != thrift.REPLY {
@@ -2417,11 +2394,11 @@ func NewBeeswaxServiceProcessor(handler BeeswaxService) *BeeswaxServiceProcessor
 return self27
 }
 
-func (p *BeeswaxServiceProcessor) Process(iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *BeeswaxServiceProcessor) Process(context context.Context, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   name, _, seqId, err := iprot.ReadMessageBegin()
   if err != nil { return false, err }
   if processor, ok := p.GetProcessorFunction(name); ok {
-    return processor.Process(seqId, iprot, oprot)
+    return processor.Process(context, seqId, iprot, oprot)
   }
   iprot.Skip(thrift.STRUCT)
   iprot.ReadMessageEnd()
@@ -2438,7 +2415,7 @@ type beeswaxServiceProcessorQuery struct {
   handler BeeswaxService
 }
 
-func (p *beeswaxServiceProcessorQuery) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *beeswaxServiceProcessorQuery) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := BeeswaxServiceQueryArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -2491,7 +2468,7 @@ type beeswaxServiceProcessorExecuteAndWait struct {
   handler BeeswaxService
 }
 
-func (p *beeswaxServiceProcessorExecuteAndWait) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *beeswaxServiceProcessorExecuteAndWait) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := BeeswaxServiceExecuteAndWaitArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -2544,7 +2521,7 @@ type beeswaxServiceProcessorExplain struct {
   handler BeeswaxService
 }
 
-func (p *beeswaxServiceProcessorExplain) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *beeswaxServiceProcessorExplain) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := BeeswaxServiceExplainArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -2597,7 +2574,7 @@ type beeswaxServiceProcessorFetch struct {
   handler BeeswaxService
 }
 
-func (p *beeswaxServiceProcessorFetch) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *beeswaxServiceProcessorFetch) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := BeeswaxServiceFetchArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -2652,7 +2629,7 @@ type beeswaxServiceProcessorGetState struct {
   handler BeeswaxService
 }
 
-func (p *beeswaxServiceProcessorGetState) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *beeswaxServiceProcessorGetState) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := BeeswaxServiceGetStateArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -2705,7 +2682,7 @@ type beeswaxServiceProcessorGetResultsMetadata struct {
   handler BeeswaxService
 }
 
-func (p *beeswaxServiceProcessorGetResultsMetadata) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *beeswaxServiceProcessorGetResultsMetadata) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := BeeswaxServiceGetResultsMetadataArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -2758,7 +2735,7 @@ type beeswaxServiceProcessorEcho struct {
   handler BeeswaxService
 }
 
-func (p *beeswaxServiceProcessorEcho) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *beeswaxServiceProcessorEcho) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := BeeswaxServiceEchoArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -2806,7 +2783,7 @@ type beeswaxServiceProcessorDumpConfig struct {
   handler BeeswaxService
 }
 
-func (p *beeswaxServiceProcessorDumpConfig) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *beeswaxServiceProcessorDumpConfig) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := BeeswaxServiceDumpConfigArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -2854,7 +2831,7 @@ type beeswaxServiceProcessorGetLog struct {
   handler BeeswaxService
 }
 
-func (p *beeswaxServiceProcessorGetLog) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *beeswaxServiceProcessorGetLog) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := BeeswaxServiceGetLogArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -2907,7 +2884,7 @@ type beeswaxServiceProcessorGetDefaultConfiguration struct {
   handler BeeswaxService
 }
 
-func (p *beeswaxServiceProcessorGetDefaultConfiguration) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *beeswaxServiceProcessorGetDefaultConfiguration) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := BeeswaxServiceGetDefaultConfigurationArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -2955,7 +2932,7 @@ type beeswaxServiceProcessorClose struct {
   handler BeeswaxService
 }
 
-func (p *beeswaxServiceProcessorClose) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *beeswaxServiceProcessorClose) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := BeeswaxServiceCloseArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -3007,7 +2984,7 @@ type beeswaxServiceProcessorClean struct {
   handler BeeswaxService
 }
 
-func (p *beeswaxServiceProcessorClean) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *beeswaxServiceProcessorClean) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := BeeswaxServiceCleanArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()

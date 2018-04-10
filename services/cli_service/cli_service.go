@@ -5,6 +5,7 @@ package cli_service
 
 import (
 	"bytes"
+	"context"
 	"database/sql/driver"
 	"errors"
 	"fmt"
@@ -9575,15 +9576,13 @@ func (p *TCLIServiceClient) recvOpenSession() (value *TOpenSessionResp, err erro
   }
   if mTypeId == thrift.EXCEPTION {
     error24 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error25 error
-    error25, err = error24.Read(iprot)
+    err = error24.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error25
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9651,15 +9650,13 @@ func (p *TCLIServiceClient) recvCloseSession() (value *TCloseSessionResp, err er
   }
   if mTypeId == thrift.EXCEPTION {
     error26 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error27 error
-    error27, err = error26.Read(iprot)
+    err = error26.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error27
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9727,15 +9724,13 @@ func (p *TCLIServiceClient) recvGetInfo() (value *TGetInfoResp, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error28 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error29 error
-    error29, err = error28.Read(iprot)
+    err = error28.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error29
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9803,15 +9798,13 @@ func (p *TCLIServiceClient) recvExecuteStatement() (value *TExecuteStatementResp
   }
   if mTypeId == thrift.EXCEPTION {
     error30 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error31 error
-    error31, err = error30.Read(iprot)
+    err = error30.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error31
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9879,15 +9872,13 @@ func (p *TCLIServiceClient) recvGetTypeInfo() (value *TGetTypeInfoResp, err erro
   }
   if mTypeId == thrift.EXCEPTION {
     error32 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error33 error
-    error33, err = error32.Read(iprot)
+    err = error32.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error33
     return
   }
   if mTypeId != thrift.REPLY {
@@ -9955,15 +9946,13 @@ func (p *TCLIServiceClient) recvGetCatalogs() (value *TGetCatalogsResp, err erro
   }
   if mTypeId == thrift.EXCEPTION {
     error34 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error35 error
-    error35, err = error34.Read(iprot)
+    err = error34.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error35
     return
   }
   if mTypeId != thrift.REPLY {
@@ -10031,15 +10020,13 @@ func (p *TCLIServiceClient) recvGetSchemas() (value *TGetSchemasResp, err error)
   }
   if mTypeId == thrift.EXCEPTION {
     error36 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error37 error
-    error37, err = error36.Read(iprot)
+    err = error36.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error37
     return
   }
   if mTypeId != thrift.REPLY {
@@ -10107,15 +10094,13 @@ func (p *TCLIServiceClient) recvGetTables() (value *TGetTablesResp, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error38 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error39 error
-    error39, err = error38.Read(iprot)
+    err = error38.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error39
     return
   }
   if mTypeId != thrift.REPLY {
@@ -10183,15 +10168,13 @@ func (p *TCLIServiceClient) recvGetTableTypes() (value *TGetTableTypesResp, err 
   }
   if mTypeId == thrift.EXCEPTION {
     error40 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error41 error
-    error41, err = error40.Read(iprot)
+    err = error40.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error41
     return
   }
   if mTypeId != thrift.REPLY {
@@ -10259,15 +10242,13 @@ func (p *TCLIServiceClient) recvGetColumns() (value *TGetColumnsResp, err error)
   }
   if mTypeId == thrift.EXCEPTION {
     error42 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error43 error
-    error43, err = error42.Read(iprot)
+    err = error42.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error43
     return
   }
   if mTypeId != thrift.REPLY {
@@ -10335,15 +10316,13 @@ func (p *TCLIServiceClient) recvGetFunctions() (value *TGetFunctionsResp, err er
   }
   if mTypeId == thrift.EXCEPTION {
     error44 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error45 error
-    error45, err = error44.Read(iprot)
+    err = error44.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error45
     return
   }
   if mTypeId != thrift.REPLY {
@@ -10411,15 +10390,13 @@ func (p *TCLIServiceClient) recvGetOperationStatus() (value *TGetOperationStatus
   }
   if mTypeId == thrift.EXCEPTION {
     error46 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error47 error
-    error47, err = error46.Read(iprot)
+    err = error46.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error47
     return
   }
   if mTypeId != thrift.REPLY {
@@ -10487,15 +10464,13 @@ func (p *TCLIServiceClient) recvCancelOperation() (value *TCancelOperationResp, 
   }
   if mTypeId == thrift.EXCEPTION {
     error48 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error49 error
-    error49, err = error48.Read(iprot)
+    err = error48.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error49
     return
   }
   if mTypeId != thrift.REPLY {
@@ -10563,15 +10538,13 @@ func (p *TCLIServiceClient) recvCloseOperation() (value *TCloseOperationResp, er
   }
   if mTypeId == thrift.EXCEPTION {
     error50 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error51 error
-    error51, err = error50.Read(iprot)
+    err = error50.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error51
     return
   }
   if mTypeId != thrift.REPLY {
@@ -10639,15 +10612,13 @@ func (p *TCLIServiceClient) recvGetResultSetMetadata() (value *TGetResultSetMeta
   }
   if mTypeId == thrift.EXCEPTION {
     error52 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error53 error
-    error53, err = error52.Read(iprot)
+    err = error52.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error53
     return
   }
   if mTypeId != thrift.REPLY {
@@ -10715,15 +10686,13 @@ func (p *TCLIServiceClient) recvFetchResults() (value *TFetchResultsResp, err er
   }
   if mTypeId == thrift.EXCEPTION {
     error54 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error55 error
-    error55, err = error54.Read(iprot)
+    err = error54.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error55
     return
   }
   if mTypeId != thrift.REPLY {
@@ -10782,11 +10751,11 @@ func NewTCLIServiceProcessor(handler TCLIService) *TCLIServiceProcessor {
 return self56
 }
 
-func (p *TCLIServiceProcessor) Process(iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *TCLIServiceProcessor) Process(context context.Context, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   name, _, seqId, err := iprot.ReadMessageBegin()
   if err != nil { return false, err }
   if processor, ok := p.GetProcessorFunction(name); ok {
-    return processor.Process(seqId, iprot, oprot)
+    return processor.Process(context, seqId, iprot, oprot)
   }
   iprot.Skip(thrift.STRUCT)
   iprot.ReadMessageEnd()
@@ -10803,7 +10772,7 @@ type tCLIServiceProcessorOpenSession struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorOpenSession) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorOpenSession) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceOpenSessionArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10851,7 +10820,7 @@ type tCLIServiceProcessorCloseSession struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorCloseSession) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorCloseSession) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceCloseSessionArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10899,7 +10868,7 @@ type tCLIServiceProcessorGetInfo struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorGetInfo) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorGetInfo) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceGetInfoArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10947,7 +10916,7 @@ type tCLIServiceProcessorExecuteStatement struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorExecuteStatement) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorExecuteStatement) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceExecuteStatementArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -10995,7 +10964,7 @@ type tCLIServiceProcessorGetTypeInfo struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorGetTypeInfo) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorGetTypeInfo) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceGetTypeInfoArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11043,7 +11012,7 @@ type tCLIServiceProcessorGetCatalogs struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorGetCatalogs) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorGetCatalogs) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceGetCatalogsArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11091,7 +11060,7 @@ type tCLIServiceProcessorGetSchemas struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorGetSchemas) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorGetSchemas) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceGetSchemasArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11139,7 +11108,7 @@ type tCLIServiceProcessorGetTables struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorGetTables) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorGetTables) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceGetTablesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11187,7 +11156,7 @@ type tCLIServiceProcessorGetTableTypes struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorGetTableTypes) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorGetTableTypes) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceGetTableTypesArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11235,7 +11204,7 @@ type tCLIServiceProcessorGetColumns struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorGetColumns) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorGetColumns) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceGetColumnsArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11283,7 +11252,7 @@ type tCLIServiceProcessorGetFunctions struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorGetFunctions) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorGetFunctions) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceGetFunctionsArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11331,7 +11300,7 @@ type tCLIServiceProcessorGetOperationStatus struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorGetOperationStatus) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorGetOperationStatus) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceGetOperationStatusArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11379,7 +11348,7 @@ type tCLIServiceProcessorCancelOperation struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorCancelOperation) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorCancelOperation) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceCancelOperationArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11427,7 +11396,7 @@ type tCLIServiceProcessorCloseOperation struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorCloseOperation) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorCloseOperation) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceCloseOperationArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11475,7 +11444,7 @@ type tCLIServiceProcessorGetResultSetMetadata struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorGetResultSetMetadata) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorGetResultSetMetadata) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceGetResultSetMetadataArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -11523,7 +11492,7 @@ type tCLIServiceProcessorFetchResults struct {
   handler TCLIService
 }
 
-func (p *tCLIServiceProcessorFetchResults) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *tCLIServiceProcessorFetchResults) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := TCLIServiceFetchResultsArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()

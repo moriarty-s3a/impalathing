@@ -5,6 +5,7 @@ package fb303
 
 import (
 	"bytes"
+	"context"
 	"database/sql/driver"
 	"errors"
 	"fmt"
@@ -202,15 +203,13 @@ func (p *FacebookServiceClient) recvGetName() (value string, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error0 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error1 error
-    error1, err = error0.Read(iprot)
+    err = error0.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error1
     return
   }
   if mTypeId != thrift.REPLY {
@@ -276,15 +275,13 @@ func (p *FacebookServiceClient) recvGetVersion() (value string, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error2 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error3 error
-    error3, err = error2.Read(iprot)
+    err = error2.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error3
     return
   }
   if mTypeId != thrift.REPLY {
@@ -350,15 +347,13 @@ func (p *FacebookServiceClient) recvGetStatus() (value FbStatus, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error4 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error5 error
-    error5, err = error4.Read(iprot)
+    err = error4.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error5
     return
   }
   if mTypeId != thrift.REPLY {
@@ -425,15 +420,13 @@ func (p *FacebookServiceClient) recvGetStatusDetails() (value string, err error)
   }
   if mTypeId == thrift.EXCEPTION {
     error6 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error7 error
-    error7, err = error6.Read(iprot)
+    err = error6.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error7
     return
   }
   if mTypeId != thrift.REPLY {
@@ -499,15 +492,13 @@ func (p *FacebookServiceClient) recvGetCounters() (value map[string]int64, err e
   }
   if mTypeId == thrift.EXCEPTION {
     error8 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error9 error
-    error9, err = error8.Read(iprot)
+    err = error8.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error9
     return
   }
   if mTypeId != thrift.REPLY {
@@ -577,15 +568,13 @@ func (p *FacebookServiceClient) recvGetCounter() (value int64, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error10 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error11 error
-    error11, err = error10.Read(iprot)
+    err = error10.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error11
     return
   }
   if mTypeId != thrift.REPLY {
@@ -657,15 +646,13 @@ func (p *FacebookServiceClient) recvSetOption() (err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error12 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error13 error
-    error13, err = error12.Read(iprot)
+    err = error12.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error13
     return
   }
   if mTypeId != thrift.REPLY {
@@ -734,15 +721,13 @@ func (p *FacebookServiceClient) recvGetOption() (value string, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error14 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error15 error
-    error15, err = error14.Read(iprot)
+    err = error14.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error15
     return
   }
   if mTypeId != thrift.REPLY {
@@ -808,15 +793,13 @@ func (p *FacebookServiceClient) recvGetOptions() (value map[string]string, err e
   }
   if mTypeId == thrift.EXCEPTION {
     error16 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error17 error
-    error17, err = error16.Read(iprot)
+    err = error16.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error17
     return
   }
   if mTypeId != thrift.REPLY {
@@ -887,15 +870,13 @@ func (p *FacebookServiceClient) recvGetCpuProfile() (value string, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error18 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error19 error
-    error19, err = error18.Read(iprot)
+    err = error18.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error19
     return
   }
   if mTypeId != thrift.REPLY {
@@ -961,15 +942,13 @@ func (p *FacebookServiceClient) recvAliveSince() (value int64, err error) {
   }
   if mTypeId == thrift.EXCEPTION {
     error20 := thrift.NewTApplicationException(thrift.UNKNOWN_APPLICATION_EXCEPTION, "Unknown Exception")
-    var error21 error
-    error21, err = error20.Read(iprot)
+    err = error20.Read(iprot)
     if err != nil {
       return
     }
     if err = iprot.ReadMessageEnd(); err != nil {
       return
     }
-    err = error21
     return
   }
   if mTypeId != thrift.REPLY {
@@ -1079,11 +1058,11 @@ func NewFacebookServiceProcessor(handler FacebookService) *FacebookServiceProces
 return self22
 }
 
-func (p *FacebookServiceProcessor) Process(iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *FacebookServiceProcessor) Process(context context.Context, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   name, _, seqId, err := iprot.ReadMessageBegin()
   if err != nil { return false, err }
   if processor, ok := p.GetProcessorFunction(name); ok {
-    return processor.Process(seqId, iprot, oprot)
+    return processor.Process(context, seqId, iprot, oprot)
   }
   iprot.Skip(thrift.STRUCT)
   iprot.ReadMessageEnd()
@@ -1100,7 +1079,7 @@ type facebookServiceProcessorGetName struct {
   handler FacebookService
 }
 
-func (p *facebookServiceProcessorGetName) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *facebookServiceProcessorGetName) Process(context context.Context,seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := FacebookServiceGetNameArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -1148,7 +1127,7 @@ type facebookServiceProcessorGetVersion struct {
   handler FacebookService
 }
 
-func (p *facebookServiceProcessorGetVersion) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *facebookServiceProcessorGetVersion) Process(context context.Context,seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := FacebookServiceGetVersionArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -1196,7 +1175,7 @@ type facebookServiceProcessorGetStatus struct {
   handler FacebookService
 }
 
-func (p *facebookServiceProcessorGetStatus) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *facebookServiceProcessorGetStatus) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := FacebookServiceGetStatusArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -1244,7 +1223,7 @@ type facebookServiceProcessorGetStatusDetails struct {
   handler FacebookService
 }
 
-func (p *facebookServiceProcessorGetStatusDetails) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *facebookServiceProcessorGetStatusDetails) Process(context context.Context, seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := FacebookServiceGetStatusDetailsArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -1292,7 +1271,7 @@ type facebookServiceProcessorGetCounters struct {
   handler FacebookService
 }
 
-func (p *facebookServiceProcessorGetCounters) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *facebookServiceProcessorGetCounters) Process(context context.Context,seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := FacebookServiceGetCountersArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -1340,7 +1319,7 @@ type facebookServiceProcessorGetCounter struct {
   handler FacebookService
 }
 
-func (p *facebookServiceProcessorGetCounter) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *facebookServiceProcessorGetCounter) Process(context context.Context,seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := FacebookServiceGetCounterArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -1388,7 +1367,7 @@ type facebookServiceProcessorSetOption struct {
   handler FacebookService
 }
 
-func (p *facebookServiceProcessorSetOption) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *facebookServiceProcessorSetOption) Process(context context.Context,seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := FacebookServiceSetOptionArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -1433,7 +1412,7 @@ type facebookServiceProcessorGetOption struct {
   handler FacebookService
 }
 
-func (p *facebookServiceProcessorGetOption) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *facebookServiceProcessorGetOption) Process(context context.Context,seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := FacebookServiceGetOptionArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -1481,7 +1460,7 @@ type facebookServiceProcessorGetOptions struct {
   handler FacebookService
 }
 
-func (p *facebookServiceProcessorGetOptions) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *facebookServiceProcessorGetOptions) Process(context context.Context,seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := FacebookServiceGetOptionsArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -1529,7 +1508,7 @@ type facebookServiceProcessorGetCpuProfile struct {
   handler FacebookService
 }
 
-func (p *facebookServiceProcessorGetCpuProfile) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *facebookServiceProcessorGetCpuProfile) Process(context context.Context,seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := FacebookServiceGetCpuProfileArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -1577,7 +1556,7 @@ type facebookServiceProcessorAliveSince struct {
   handler FacebookService
 }
 
-func (p *facebookServiceProcessorAliveSince) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *facebookServiceProcessorAliveSince) Process(context context.Context,seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := FacebookServiceAliveSinceArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -1625,7 +1604,7 @@ type facebookServiceProcessorReinitialize struct {
   handler FacebookService
 }
 
-func (p *facebookServiceProcessorReinitialize) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *facebookServiceProcessorReinitialize) Process(context context.Context,seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := FacebookServiceReinitializeArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
@@ -1644,7 +1623,7 @@ type facebookServiceProcessorShutdown struct {
   handler FacebookService
 }
 
-func (p *facebookServiceProcessorShutdown) Process(seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
+func (p *facebookServiceProcessorShutdown) Process(context context.Context,seqId int32, iprot, oprot thrift.TProtocol) (success bool, err thrift.TException) {
   args := FacebookServiceShutdownArgs{}
   if err = args.Read(iprot); err != nil {
     iprot.ReadMessageEnd()
